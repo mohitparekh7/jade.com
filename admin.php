@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("connection.php");
+
 if (isset($_POST['submit_login_admin'])) {
     $admin_username = $_POST['admin_username'];
     $admin_password = $_POST['admin_password'];
@@ -9,12 +10,13 @@ if (isset($_POST['submit_login_admin'])) {
     $row = mysqli_fetch_array($query);
     if ($num_rows > 0) {
         $_SESSION["id"] = $row['admin_id'];
+        $_SESSION["username"] = $row['admin_username'];
         $_SESSION["success"] = 'You are now logged in';
-        echo $row['admin_id'];
+        echo $row['admin_username'];
 ?>
         <script>
             alert('Successfully logged in');
-            document.location = 'dashboard.php';
+            window.location = 'dashboard.php';
         </script>
     <?php
     } else {
@@ -176,27 +178,6 @@ if (isset($_POST['submit_login_admin'])) {
         font-size: 14px;
     }
 </style>
-<!-- <script type="text/javascript">
-		function valform()
-		{
-			var pass = document.form1.login_password.value;
-			var email = document.form1.login_email.value;
-
-			if (email==null || email==""){
-				alert("Email can't be blank");
-				return false;
-			}
-
-			if (pass==null || pass==""){
-				alert("Password can't be blank");
-				return false;
-			}
-
-
-		}
-
-	</script> -->
-
 
 <body>
     <?php

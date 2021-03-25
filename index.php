@@ -9,12 +9,12 @@ if(isset($_GET['msg'])){
 }else{
 	$loginmsg="";
 }
-if(isset($_SESSION['cust_id'])){
-	$cust_id = $_SESSION['cust_id'];
-	$cquery = mysqli_query($con,"SELECT * FROM user_details where user_emailid ='$cust_id'");
+if(isset($_SESSION['user_id'])){
+	$user_id = $_SESSION['user_id'];
+	$cquery = mysqli_query($con,"SELECT * FROM user_details where user_id ='$user_id'");
 	$cresult = mysqli_fetch_array($cquery);
 }else{
-	$cust_id="";
+	$user_id="";
 }
 
 if(isset($login)){

@@ -2,13 +2,13 @@
 session_start();
 include("connection.php");
 extract($_REQUEST);
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['username'])) {
     header("location:admin.php");
 } else {
-    $admin_username = $_SESSION['admin'];
+    $admin_username = $_SESSION['username'];
 }
 if (isset($logout)) {
-    unset($_SESSION['admin']);
+    unset($_SESSION['username']);
     setcookie('logout', 'loggedout successfully', time() + 5);
     header("location:admin.php");
 }
@@ -25,10 +25,10 @@ $pass = $row_admin['admin_password'];
 
 //update
 if (isset($update)) {
-    if (mysqli_query($con, "update tbadmin set fld_password='$password'")) {
+    if (mysqli_query($con, "update admin set admin_password='$password'")) {
         //$_SESSION['pas_update_success']="Password Updated Successfully Login with New Password";
-        unset($_SESSION['admin']);
-        header("location:admin_info_update.php");
+        unset($_SESSION['username']);
+        // header("location:admin_info_update.php");  CHECK FOR UPDATE
     } else {
         echo "failed";
     }
@@ -88,7 +88,7 @@ if (isset($update)) {
         function delRecord(id) {
             //alert(id);
 
-            var x = confirm("You want to delete this record? All Food Items Of that Vendor Will Also Be Deleted");
+            var x = confirm("You want to delete this record? All Products Of that Vendor Will Also Be Deleted");
             if (x == true) {
 
                 //document.getElementById("#result").innerHTML="success";
@@ -154,7 +154,7 @@ if (isset($update)) {
 
                                 <tr>
                                     <th scope="row"><?php echo $row['vendor_id']; ?></th>
-                                    <td><img src="<?php $row['p_img']; ?>" height="50px" width="100px">
+                                    <td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['p_img']).'" height="250px" width="150px" />' ?>
                                         <br><?php echo $row['p_name']; ?>
                                     </td>
                                     <td><?php echo $row['p_category']; ?></td>
@@ -233,7 +233,7 @@ if (isset($update)) {
                             while ($row = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
-                                    <td><img src="" height="50px" width="100px"></td>
+                                    <td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['vendor_img']).'" height="250px" width="150px" />' ?></td>
                                     <th scope="row"><?php echo $row['vendor_id']; ?></th>
                                     <td><?php echo $row['vendor_name']; ?></td>
                                     <td><?php echo $row['vendor_address']; ?></td>

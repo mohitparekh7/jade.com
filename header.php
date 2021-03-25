@@ -108,15 +108,8 @@
 					<li class="nav-item active px-2">
 						<a class="nav-link active-link" href="index.php">Home <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Categories
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Women</a>
-							<a class="dropdown-item" href="#">Men</a>
-							<a class="dropdown-item" href="#">Kids</a>
-						</div>
+					<li class="nav-item px-2">
+						<a class="nav-link" href="product.php">Our Products</a>
 					</li>
 					<li class="nav-item px-2">
 						<a class="nav-link" href="about_us.php">About</a>
@@ -147,7 +140,7 @@
 							<?php
 							} else {
 							?>
-								<a href="form/cart.php"><span style=" color:green; font-size:30px;"><i class="fa fa-shopping-cart" aria-hidden="true"><span style="color:green;" id="cart" class="badge badge-light"><?php if (isset($re)) {
+								<a href="cart.php"><span style=" color:green; font-size:30px;"><i class="fa fa-shopping-cart" aria-hidden="true"><span style="color:green;" id="cart" class="badge badge-light"><?php if (isset($re)) {
 																																																							echo $re;
 																																																						} ?></span></i></span></a>
 								<button class="btn btn-outline-success my-2 my-sm-0" name="logout" type="submit">Log Out</button>&nbsp;&nbsp;&nbsp;
