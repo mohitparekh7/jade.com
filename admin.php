@@ -28,6 +28,10 @@ if (isset($_POST['submit_login_admin'])) {
     }
 }
 ?>
+
+<?php
+include("header.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -180,28 +184,22 @@ if (isset($_POST['submit_login_admin'])) {
 </style>
 
 <body>
-    <?php
-    include("header.php");
-    ?>
-
     <div class="form1">
+        <h3>Admin Login</h3>
+        <form method="post" name='form' onsubmit="return valform()">
         <table>
-            <h3>Admin Login</h3>
-            <form method="post" name='form' onsubmit="return valform()">
-                <tr>
-                    <td><label>Username</label></td>
-                    <td><input type="" required name="admin_username"></td>
-                </tr>
-
-                <tr>
-                    <td><label>Password</label></td>
-                    <td><input type="password" required name="admin_password"></td>
-                </tr>
-        </table>
-        <div><button type="submit" class="btn btn1" name="submit_login_admin">Login</button></div>
-
-        </form>
-        </table>
+            <tr>
+                <td><label>Email Id</label></td>
+                <td><input type="email" required name="login_email"></td>
+            </tr>
+            
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" required name="login_password"></td>
+            </tr>
+    </table>
+            <div><button type="submit" class="btn btn1" name="submit_login">Login</button></div>    
+    </form> 
     </div>
 
 
